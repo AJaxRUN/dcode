@@ -1,0 +1,15 @@
+body {
+    background: url(../src/images/bg.jpg);
+}
+
+.inputBg {
+	background: rgba(255,255,255, 0.30);
+	border-radius: 50px;
+	width: 440px;
+	height: 380px;
+	padding: 40px;
+}
+
+hr{
+	border-color: #222223;
+}
