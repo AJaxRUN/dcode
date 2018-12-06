@@ -32,7 +32,7 @@
                                             <input name="password" id="password" type="password" class="form-control" placeholder="Password *" value="" />
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" id="cnfpassword" name="cnfpassword" class="form-control"  placeholder="Confirm Password *" value="" />
+                                            <input type="password" id="cnfpassword" class="form-control"  placeholder="Confirm Password *" value="" />
                                             <div id="passworderror" class="alert-danger"></div><br>
                                         </div>
                                        <div class="form-group">
@@ -116,7 +116,6 @@
                 {
                     if(data=="success")
                         alert("Done");
-                        // window.location.href="../login_module/login.php";
                     else
                         alert("Some error occured");
                 }
