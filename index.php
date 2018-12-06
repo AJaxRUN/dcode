@@ -22,7 +22,7 @@
 	//Home page after login
 	else if($_SESSION['login'] == true)
 	{
-		redirect_page("modules/login_module/login.php");
+		redirect_page("modules/landing_module/request.php");
 	}
 
 	//Function to load login page
