@@ -1,5 +1,5 @@
 <?php
-	require "../connection/connection.php";
+	include "../connection/connection.php";
 	session_start();
 	$conn = Connection();
 	if(empty($_REQUEST))

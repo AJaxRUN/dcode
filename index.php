@@ -3,7 +3,7 @@
 	session_start();
 
 	//Global varaibles
-	$url = "http://localhost/D Code/";
+	$url = "http://localhost/DCode/";
 	$query = $_SERVER['QUERY_STRING'];
 
 	if(!isset($_SESSION['login']))
