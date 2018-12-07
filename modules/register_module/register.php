@@ -36,17 +36,19 @@
                                             <div id="passworderror" class="alert-danger"></div><br>
                                         </div>
                                        <div class="form-group">
-                                            <input type="email" name="email" class="form-control" placeholder="Contact Email *" value="" />
-                                            <label for="email">Mail ID will be used only for updates and communication regarding queries!!</label>
+                                            <input id="email" type="email" name="email" class="form-control" aria-describedby="emailHelp" placeholder="Contact Email *" value="" />
+                                            <small id="emailHelp">Mail ID will be used only for updates and communication regarding queries!!</small>
+                                            <div id="emailerror" class="alert-danger"></div><br>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                            <input type="college" id="clgname" name="clgname" class="form-control" placeholder="College name *" value="" />
+                                           <div id="clgnameerror" class="alert-danger"></div><br>
                                         </div>
                                         <div class="form-group" name="selectBranches" id="selectBranchess">
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" id="programmes">
                                             <p>Select progammes offered</p>&nbsp
                                             <input type="checkbox" name="ug">UG &nbsp
                                             <input type="checkbox" name="pg">PG
@@ -60,15 +62,22 @@
                     </div>
                 </div>
             </form>
+        </div>
 </body>
 <script type="text/javascript">
     var errormsg="";
+
+    function isValidEmailAddress(emailAddress) {
+    var pattern = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+    return pattern.test(emailAddress);
+}
     //To load all the branches available from branch.html
     $("#selectBranchess").load("../../src/data/branches.html");
 
     //To load respective departments
     $(document).ready(function(){
         $("#errormsg").hide();
+        $("#emailerror").hide();
         $("#invalid_contactnumber").hide();
         $("#passworderror").hide();
         $("#eng").change(function() {
@@ -77,13 +86,22 @@
                   $("#selectDepts").show();
             }
             else
-                $("#selectDepts").hide();
+                $("#selectDepts").empty();
         });
     });
     $("#register").click(function(event) {
         event.preventDefault();
-        $("#passworderror").text("").hide();
         var isValid=true;
+        if(($.trim($("#email").val()).length>0)&&!isValidEmailAddress($("#email").val()))
+        {
+            $("#emailerror").text(" Please enter a valid email ID").show();
+            isValid=false;
+        }
+        else {
+            $("#emailerror").hide();
+            isValid=true;
+        }
+        $("#passworderror").text("").hide();
         if(!($("#password").val()===$("#cnfpassword").val())) {
             isValid=false;
             errormsg=" Passwords don't match!";
@@ -102,20 +120,41 @@
                     isValid=true;
             });
         }
-        if(!($("#selectDepts input[type=checkbox]:checked").length>0))
+        if(!($("#programmes input[type=checkbox]:checked").length>0))
+            isValid=false;
+        if(document.getElementById("eng").checked&&!($("#selectDepts input[type=checkbox]:checked").length>0))
             isValid=false;
         if(!($("#selectBranchess input[type=checkbox]:checked").length>0))
             isValid=false;
-        if(isValid) {
+        if(isValid)
             $("#errormsg").text("").hide();
+        $.ajax({
+            type:"post",
+            url:"validateajax.php?clgname="+$("#clgname").val(),
+            async: false,
+            cache: false,
+            success: function(data) {
+                if(!(data=="success")) {
+                    $("#clgnameerror").text("College has been registered already!").show();
+                    isValid=false;
+                }
+                else {
+                    isValid=true;
+                    $("#clgnameerror").hide();
+                }
+            }
+        });
+        if(isValid) {
             data=$("form").serialize();
             $.ajax({
                 type:"POST",   
+                async: false,
+                cache: false,
                 url:"registerajax.php?"+data,
                 success:function(data)
                 {
                     if(data=="success")
-                        alert("Done");
+                        window.location.href="registerSuccessfull.php";
                     else
                         alert("Some error occured");
                 }
@@ -123,7 +162,7 @@
             });
         }
         else
-            $("#errormsg").text(" Please fill all the input fields!!").show();
+            $("#errormsg").text(" Please fill all the input fields(valid inputs)!!").show();
     });
 
 

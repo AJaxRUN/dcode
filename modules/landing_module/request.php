@@ -29,7 +29,7 @@ $conn = Connection();
                 echo "<div class='card'>";
                 echo "<div class='container'>";
                 echo "<h4><b>".$key."</b></h4>";
-                echo "<p>".$data[$key]['hi']."</p>";
+                echo "<p>".$data[$key]['username']."</p>";
                 echo "<button class='btn btn-sm btn-success' type='button'>Accept</button>";
                 echo " </div>";
                 echo "</div>";

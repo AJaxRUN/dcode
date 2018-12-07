@@ -81,7 +81,6 @@
   				  if(data==="failed")
   				  	errordisplay("empty_password","Invalid credentials");
   				  else if(data==="success") {
-              alert("Congrats");
   				  	window.location.href = "../../index.php";
   				  }
   				  else if(data==="Error")
