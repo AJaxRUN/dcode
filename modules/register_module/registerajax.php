@@ -1,6 +1,7 @@
 <?php
 	include "../connection/connection.php";
 	$conn = Connection();
+	session_start();
 	$clgname = $_REQUEST['clgname'];
 	$postdatajson = json_encode(array($clgname => $_REQUEST), JSON_FORCE_OBJECT);
 	$postdata = json_decode($postdatajson,true);
@@ -13,8 +14,11 @@
 		$postdatajson = json_encode($temparray);
 		$query = "UPDATE developer SET data = '".$postdatajson."' WHERE details='requests'";
 		$result = mysqli_query($conn, $query);
+		$_SESSION['register']="success";
 		echo "success";
 	}
-	else
+	else {
+		$_SESSION['register']="failed";
 		echo "failed";
+	}
 ?>
