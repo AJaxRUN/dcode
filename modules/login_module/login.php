@@ -10,6 +10,9 @@
 <head>
 	<title>D CODE</title>
 	<link rel="stylesheet" href="../../css/login.css">
+	<ul>
+  <li style="float:right;margin-right:10px;"><a class="active" href="../logout/logout.php">Logout</a></li>
+</ul>
 </head>
 <body>
 	<div class="container-fluid">
