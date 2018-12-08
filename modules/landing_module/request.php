@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(!isset($_SESSION['login'])||($_SESSION['login']==false))
+{
+  header('Location:../../index.php');
+}
 require "../connection/connection.php" ;
 $conn = Connection();
 ?>
@@ -30,7 +35,7 @@ $conn = Connection();
                 echo "<div class='container'>";
                 echo "<h4><b>".$key."</b></h4>";
                 echo "<p>".$data[$key]['username']."</p>";
-                echo "<button class='btn btn-sm btn-success' type='button'>Accept</button>";
+                echo "<button class='btn btn-sm btn-success' id=$key onclick='redirect(this.id)' type='button'>Accept</button>";
                 echo " </div>";
                 echo "</div>";
             }
@@ -41,43 +46,47 @@ $conn = Connection();
 	</div>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <!-- <script type="text/javascript">
-  	function errordisplay(id, msg)
-  	{
-  		$("#"+id).html(msg).show();
-  	}
-  	$("#submit_btn").click(function() {
-  		if(!$("#username").val())
-  		{
-  			errordisplay("empty_username","Enter your username");
-  		}
-  		else
-  			$("#empty_username").hide();
-  		if(!$("#password").val())
-  		{
-  			errordisplay("empty_password","Enter your password");
-  		}
-  		else
-  			$("#empty_password").hide();
-  		if(!$("#empty_password").is(":visible")&&!($("#empty_username").is(":visible")))
-  		{
-  			var uname = $("#username").val();
-  			var pwd = $("#password").val();
-  			$.ajax({
-  				type:"POST",
-  				url:"validate.php?username="+uname+"&password="+pwd,
-  				success:function(data)
-  				{
-  				  if(data==="failed")
-  				  	errordisplay("empty_password","Invalid credentials");
-  				  else if(data==="success") {
-  				  	window.location.href = "../../index.php";
-  				  }
-  				  else if(data==="Error")
-  				  	errordisplay("empty_password","Unknown Error");
-  				}
-  			});
-  		}
-  	}); -->
+  <script type="text/javascript">
+  function redirect(id)
+  {
+	  window.location.href="requestcreate.php?name="+id;
+  }
+  	// function errordisplay(id, msg)
+  	// {
+  	// 	$("#"+id).html(msg).show();
+  	// }
+  	// $("#submit_btn").click(function() {
+  	// 	if(!$("#username").val())
+  	// 	{
+  	// 		errordisplay("empty_username","Enter your username");
+  	// 	}
+  	// 	else
+  	// 		$("#empty_username").hide();
+  	// 	if(!$("#password").val())
+  	// 	{
+  	// 		errordisplay("empty_password","Enter your password");
+  	// 	}
+  	// 	else
+  	// 		$("#empty_password").hide();
+  	// 	if(!$("#empty_password").is(":visible")&&!($("#empty_username").is(":visible")))
+  	// 	{
+  	// 		var uname = $("#username").val();
+  	// 		var pwd = $("#password").val();
+  	// 		$.ajax({
+  	// 			type:"POST",
+  	// 			url:"validate.php?username="+uname+"&password="+pwd,
+  	// 			success:function(data)
+  	// 			{
+  	// 			  if(data==="failed")
+  	// 			  	errordisplay("empty_password","Invalid credentials");
+  	// 			  else if(data==="success") {
+  	// 			  	window.location.href = "../../index.php";
+  	// 			  }
+  	// 			  else if(data==="Error")
+  	// 			  	errordisplay("empty_password","Unknown Error");
+  	// 			}
+  	// 		});
+  	// 	}
+  	// });
   </script>
 </html>
