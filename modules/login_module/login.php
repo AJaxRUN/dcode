@@ -1,6 +1,6 @@
 <?php
   if(isset($_SERVER['QUERY_STRING'])&&!empty($_SERVER['QUERY_STRING']))
-    echo "<script type='text/javascript'>var msg='Please log in to continue';</script>";
+    echo "<script type='text/javascript'>var msg='Please log in to continue!!';</script>";
   else
     echo "<script type='text/javascript'>var msg=''</script>";
 ?>
@@ -41,26 +41,24 @@
 </div>
 </div>
 		<form type="post">
-			<div class="form-group col-lg-3 col-sm-offset-4" style="padding-top: 12%;text-align: center;">
+			<div class="form-group col-lg-3 col-sm-offset-4" style="padding-top: 7%;text-align:center;">
 				<div class="inputBg">
 					<h3>D Code</h3><hr>
-          <div class="invalid-feedback" id="invalid"></div><br>
+          <div class="alert-danger" id="invalid"></div><br>
           <label for="username">Username <span class="required-input">*</span> </label>
-          <div class="col-xs-4">
-					 <input type="text" id="username" name="username" placeholder="Username" class="form-control input-lg">
-          </div>
+					<input type="text" id="username" name="username" placeholder="Username" class="form-control input-lg">
 					<p id="empty_username" class="alert-danger" hidden></p><br>
           <label for="password">Password <span class="required-input">*</span> </label>
 					<input type="password" id="password" name="password" placeholder="password" class="form-control">
 					<p id="empty_password" class="alert-danger" hidden>Enter your password</p><br>
           <p>
-            <select name="clgname">
+            <select name="clgname" class="form-control">
               <option value="College name" selected hidden>College name</option>
               <option value="SRM">SRM</option>
             </select>
           </p>
-					<button type="button" id="submit_btn" name="login" style="clear:both;display:block;margin-left:140px" class="btn btn-primary btn-lg">login</button>
-          <button type="button" id="register_btn" style="margin-top: 9px;clear:both;display:block;margin-left:129px" name="register" class="btn btn-default btn-lg">register</button>
+					<button type="button" id="submit_btn" name="login" class="btn btn-primary btn-lg">login</button>
+          <button type="button" id="register_btn" style="margin-top:9px;clear:both;display:block;margin-left:30%" name="register" class="btn btn-default btn-lg">register</button>
 				</div>
 			</div>
 		</form>

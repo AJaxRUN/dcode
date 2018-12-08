@@ -2,7 +2,7 @@
 	session_start();
 	if(!(array_key_exists('register', $_SESSION)&&$_SESSION['register']=="success")) {
 		$_SESSION['register'] = "";
-		header("Location: ../../index.php");
+		header("Location: ../../index.php?login=failed");
 	}
 ?>
 <!DOCTYPE html>
