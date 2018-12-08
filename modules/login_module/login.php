@@ -9,13 +9,37 @@
 <html>
 <head>
 	<title>D CODE</title>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script>
+	$(document).ready(function(){
+    $("#flip").click(function(){
+        $("#panel").slideToggle("slow");
+    });
+});
+	</script>
 	<link rel="stylesheet" href="../../css/login.css">
 	<ul>
-  <li style="float:right;margin-right:10px;"><a class="active" href="../logout/logout.php">Logout</a></li>
+  <li style="float:right;margin-right:10px;" id="flip"><a class="active">Developers</a></li>
 </ul>
 </head>
 <body>
 	<div class="container-fluid">
+	<div id="panel">
+		<div class="card">
+		<!-- <div class="container"> -->
+			<h4><b>Arjun C R</b></h4>
+			<h5>CSE-A</h5>
+			<h5>2016-20</h5>
+		<!-- </div> -->
+</div>
+		<div class="card">
+		<!-- <div class="container"> -->
+			<h4><b>R Akshaya</b></h4>
+			<h5>CSE-A</h5>
+			<h5>2016-20</h5>
+		<!-- </div> -->
+</div>
+</div>
 		<form type="post">
 			<div class="form-group col-lg-3 col-sm-offset-4" style="padding-top: 12%;text-align: center;">
 				<div class="inputBg">
@@ -40,7 +64,6 @@
 		</form>
 	</div>
 </body>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script type="text/javascript">
     if(msg!="")
       $("#invalid").text(msg);
