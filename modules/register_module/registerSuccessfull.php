@@ -1,7 +1,9 @@
 <?php
 	session_start();
-	if(!(array_key_exists('register', $_SESSION)&&$_SESSION['register']=="success"))
+	if(!(array_key_exists('register', $_SESSION)&&$_SESSION['register']=="success")) {
+		$_SESSION['register'] = "";
 		header("Location: ../../index.php");
+	}
 ?>
 <!DOCTYPE html>
 <html>

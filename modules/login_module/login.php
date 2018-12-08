@@ -19,7 +19,9 @@
 					<h3>D Code</h3><hr>
           <div class="invalid-feedback" id="invalid"></div><br>
           <label for="username">Username <span class="required-input">*</span> </label>
-					<input type="text" id="username" name="username" placeholder="Username" class="form-control">
+          <div class="col-xs-4">
+					 <input type="text" id="username" name="username" placeholder="Username" class="form-control input-lg">
+          </div>
 					<p id="empty_username" class="alert-danger" hidden></p><br>
           <label for="password">Password <span class="required-input">*</span> </label>
 					<input type="password" id="password" name="password" placeholder="password" class="form-control">
