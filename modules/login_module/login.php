@@ -11,20 +11,20 @@
 	<title>D CODE</title>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script>
-	$(document).ready(function(){
-    $("#flip").click(function(){
-        $("#panel").slideToggle("slow");
+  	$(document).ready(function(){
+      $("#flip").hover(function(){
+          $("#panel").slideToggle("slow");
+        });
     });
-});
 	</script>
 	<link rel="stylesheet" href="../../css/login.css">
 	<ul>
-  <li style="float:right;margin-right:10px;" id="flip"><a class="active">Developers</a></li>
+  <li style="float:right;margin-right:10px" id="flip"><a class="active" style="text-decoration:none;">Developers</a></li>
 </ul>
 </head>
 <body>
 	<div class="container-fluid">
-	<div id="panel">
+	<div id="panel" hidden>
 		<div class="card">
 		<!-- <div class="container"> -->
 			<h4><b>Arjun C R</b></h4>
@@ -41,30 +41,48 @@
 </div>
 </div>
 		<form type="post">
-			<div class="form-group col-lg-3 col-sm-offset-4" style="padding-top: 7%;text-align:center;">
+			<div class="form-group col-lg-3 col-sm-offset-4" style="padding-top: 4%;text-align:center;">
 				<div class="inputBg">
 					<h3>D Code</h3><hr>
           <div class="alert-danger" id="invalid"></div><br>
           <label for="username">Username <span class="required-input">*</span> </label>
-					<input type="text" id="username" name="username" placeholder="Username" class="form-control input-lg">
+					<input type="text" id="username" name="username" placeholder="Username" class="form-control">
 					<p id="empty_username" class="alert-danger" hidden></p><br>
           <label for="password">Password <span class="required-input">*</span> </label>
 					<input type="password" id="password" name="password" placeholder="password" class="form-control">
 					<p id="empty_password" class="alert-danger" hidden>Enter your password</p><br>
           <p>
-            <select name="clgname" class="form-control">
+            <select name="clgname" id="clgname" class="form-control">
               <option value="College name" selected hidden>College name</option>
-              <option value="SRM">SRM</option>
             </select>
           </p>
-					<button type="button" id="submit_btn" name="login" class="btn btn-primary btn-lg">login</button>
-          <button type="button" id="register_btn" style="margin-top:9px;clear:both;display:block;margin-left:30%" name="register" class="btn btn-default btn-lg">register</button>
+          <div>
+            <p><button type="button" id="submit_btn" name="login" class="btn btn-success btn-lg">login</button></p>
+            <p><button type="button" id="register_btn" name="register" class="btn btn-primary btn-lg">register</button></p>
+          </div>
 				</div>
 			</div>
 		</form>
 	</div>
 </body>
   <script type="text/javascript">
+
+    //To populate college names 
+    $(document).ready(function () {
+      $.ajax({
+        type: 'GET',
+        url: 'populate.php',
+        async: false,
+        cache: false,
+        success: function(data) {
+          res = data.split("%%");
+          res.pop();
+          $.each(res, function(item) {
+            $("#clgname").append('<option value="'+res[item]+'">'+res[item]+'</option>');
+          });
+        }
+      });
+    });
     if(msg!="")
       $("#invalid").text(msg);
     //Redirect to register page

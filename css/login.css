@@ -4,8 +4,9 @@ body {
 
 .inputBg {
 	background: rgba(255,255,255, 0.30);
-	border-radius: 50px;
-	padding: 40px;
+	border-radius: 25px 60px;
+  width: 130%;
+	padding: 40px 40px 20px 40px;
 }
 
 hr{

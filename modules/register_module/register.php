@@ -43,7 +43,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                           <input type="college" id="clgname" name="clgname" class="form-control" placeholder="College name *" value="" />
+                                           <input type="text" id="clgname" name="clgname" class="form-control" placeholder="College name *" value="" />
                                            <div id="clgnameerror" class="alert-danger"></div><br>
                                         </div>
                                         <div class="form-group" name="selectBranches" id="selectBranchess">
@@ -54,6 +54,11 @@
                                             <input type="checkbox" name="pg">PG
                                         </div>
                                         <div class="form-group" id="selectDepts">
+                                        </div>
+                                        <div class="form-group">
+                                           <input type="password" id="keyCode" name="keyCode" class="form-control" placeholder="Key Code *" value="" />
+                                           <small id="emailHelp">Key Code is the numeric code provided by the developers!!</small>
+                                           <div id="keyCodeError" class="alert-danger"></div><br>
                                         </div>
                                         <div id="errormsg" class="alert-danger"></div><br>
                                         <input type="submit" id="register" class="btn btn-primary" value="Register"/>
@@ -76,6 +81,7 @@
 
     //To load respective departments
     $(document).ready(function(){
+        $("#keyCodeError").hide();
         $("#errormsg").hide();
         $("#emailerror").hide();
         $("#invalid_contactnumber").hide();
@@ -144,6 +150,27 @@
                 }
             }
         });
+        if(isValid) {
+            var code=$("#keyCode").val();
+            $.ajax({
+                type:"POST",   
+                async: false,
+                cache: false,
+                url:"keyCodeAjax.php?code="+code,
+                success:function(data)
+                {
+                    if(data=="success") {
+                        isValid=true;
+                        $("#keyCodeError").hide();
+                    }
+                    else {
+                        isValid=false;
+                        $("#keyCodeError").text(" Invalid Key Code").show();
+                    }
+                }
+
+            });
+        }
         if(isValid) {
             data=$("form").serialize();
             $.ajax({
