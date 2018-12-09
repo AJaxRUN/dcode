@@ -28,7 +28,7 @@
 	<div id="panel" hidden>
 		<div class="card">
 		<!-- <div class="container"> -->
-		<img src="../../src/images/aj.jpg" style="float:left;width:100px;height:90px;margin-bottom:5px;">
+		<img src="../../src/images/aj1.jpg" style="float:left;width:100px;height:90px;margin-bottom:5px;">
 			<h4><b>C R Arjun</b></h4>
 			<h5>CSE-A</h5>
 			<h5>2016-20</h5>
@@ -54,22 +54,20 @@
 				<div class="inputBg">
 					<h3>D Code</h3><hr>
           <div class="alert-danger" id="invalid"></div><br>
-          <label for="username">Username <span class="required-input">*</span> </label>
+          <label for="username" style="float:left;margin-bottom:10px;">Username <span class="required-input">*</span> </label>
 					<input type="text" id="username" name="username" placeholder="Username" class="form-control">
 					<p id="empty_username" class="alert-danger" hidden></p><br>
-          <label for="password">Password <span class="required-input">*</span> </label>
-					<input type="password" id="password" name="password" placeholder="password" class="form-control">
+          <label for="password" style="float:left;margin-bottom:10px;">Password <span class="required-input">*</span> </label>
+					<input type="password" id="password" name="password" placeholder="Password" class="form-control">
 					<p id="empty_password" class="alert-danger" hidden>Enter your password</p><br>
-          <p>
-            <select name="clgname" id="clgname" class="form-control">
+            <select name="clgname" id="clgname" class="form-control" style="margin-top:10px;">
               <option value="College name" selected hidden>College name</option>
             </select>
             <p id="empty_clg" class="alert-danger" hidden>Enter your password</p><br>
-          </p>
-          <p><input type="checkbox" name="dev" id="dev" class="form-check-input"> Developer</p>
+        	<input type="checkbox" name="dev" id="dev" class="form-check-input" style="margin-top:0px;margin-bottom:20px;"> Developer
           <div>
-            <p><button type="button" id="submit_btn" name="login" class="btn btn-primary btn-lg">login</button></p>
-            <p><button type="button" id="register_btn" name="register" class="btn btn-primary btn-lg">register</button></p>
+            <p><button type="button" id="submit_btn" name="login" class="btn btn-primary btn-lg" style="width:150px;">Login</button></p>
+            <p><button type="button" id="register_btn" name="register" class="btn btn-primary btn-lg" style="width:150px;">Register</button></p>
           </div>
 				</div>
 			</div>

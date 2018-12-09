@@ -21,6 +21,9 @@
                                 <h3 class="register-heading">Register your college here!!</h3>
                                 <div class="row register-form">
                                     <div class="col-md-6">
+                                    <div class="form-group">
+                                            <input type="text" class="form-control"  name="name" placeholder="Administrator Name *" value="" />
+                                        </div>
                                         <div class="form-group">
                                             <input type="text" class="form-control"  name="username" placeholder="Administrator Username *" value="" />
                                         </div>
