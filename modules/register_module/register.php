@@ -13,7 +13,7 @@
                 <form class="row" autocomplete="off" method="POST" id="register-form">
                     <div class="col-md-3 register-left">
                         <h3>Welcome!!</h3>
-                        <p>D Code is an intiative to maintain random things in clg!! Please register your clg here</p>
+                        <p>DCode is an intiative to maintain quality of the college by ensuring discipline!! Please register your clg here</p>
                         <p>if not done yet, the approval and required services will be enabled within 48hrs!!</p>
                     </div>
                     <div class="col-md-9 register-right">
@@ -25,7 +25,7 @@
                                             <input type="text" class="form-control"  name="username" placeholder="Administrator Username *" value="" />
                                         </div>
                                     <div class="form-group">
-                                        <input type="number" name="contactnumber" class="form-control" maxLength="10" oninput="javascript:if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" onkeydown="javascript: return event.keyCode == 69 ? false : true" placeholder="Contact Number *" value="" />
+                                        <input type="number" name="contactnumber" class="form-control" maxLength="12" oninput="javascript:if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" onkeydown="javascript: return event.keyCode == 69 ? false : true" placeholder="Contact Number *" value="" />
                                         <div id="invalid_contactnumber" class="alert-danger"></div><br>
                                     </div>
                                         <div class="form-group">
@@ -86,13 +86,16 @@
         $("#emailerror").hide();
         $("#invalid_contactnumber").hide();
         $("#passworderror").hide();
+        $("#selectDepts").hide();
         $("#eng").change(function() {
             if(this.checked) {
                  $("#selectDepts").load("../../src/data/engdepts.html");
                   $("#selectDepts").show();
             }
-            else
+            else {
                 $("#selectDepts").empty();
+                $("#selectDepts").hide();
+            }
         });
     });
     $("#register").click(function(event) {

@@ -1,4 +1,5 @@
 <?php
+  session_start();
   if(isset($_SERVER['QUERY_STRING'])&&!empty($_SERVER['QUERY_STRING']))
     echo "<script type='text/javascript'>var msg='Please log in to continue!!';</script>";
   else
@@ -55,7 +56,9 @@
             <select name="clgname" id="clgname" class="form-control">
               <option value="College name" selected hidden>College name</option>
             </select>
+            <p id="empty_clg" class="alert-danger" hidden>Enter your password</p><br>
           </p>
+          <p><input type="checkbox" name="dev" id="dev" class="form-check-input"> Developer</p>
           <div>
             <p><button type="button" id="submit_btn" name="login" class="btn btn-success btn-lg">login</button></p>
             <p><button type="button" id="register_btn" name="register" class="btn btn-primary btn-lg">register</button></p>
@@ -112,23 +115,39 @@
   			$("#empty_password").hide();
   		if(!$("#empty_password").is(":visible")&&!($("#empty_username").is(":visible")))
   		{
+        var isValid=true;
   			var uname = $("#username").val();
   			var pwd = $("#password").val();
-  			$.ajax({
-  				type:"POST",
-  				url:"validate.php?username="+uname+"&password="+pwd,
-  				success:function(data)
-  				{
-  				  if(data==="failed")
-  				  	errordisplay("empty_password","Invalid credentials");
-  				  else if(data==="success") {
-  				  	window.location.href = "../../index.php";
-  				  }
-  				  else if(data==="Error")
-  				  	errordisplay("empty_password","Unknown Error");
-  				}
-  			});
-  		}
+        var urldata = "username="+uname+"&password="+pwd;
+        if(!$("#dev").is(":checked")) {
+          if($("#clgname").val()!="College name") {
+            urldata+="&clgname="+$("#clgname").val();
+            $("#empty_clg").hide();
+          }
+          else {
+            isValid = false;
+            errordisplay("empty_clg","Please select college name!!");
+          }
+        }
+        else
+          $("#empty_clg").hide();
+        if(isValid) {
+    			$.ajax({
+    				type:"POST",
+    				url:"validate.php?"+urldata,
+    				success:function(data)
+    				{
+    				  if(data==="failed")
+    				  	errordisplay("empty_password","Invalid credentials");
+    				  else if(data==="success") {
+    				  	window.location.href = "../../index.php";
+    				  }
+    				  else if(data==="Error")
+    				  	errordisplay("empty_clg","Server error!!");
+    				}
+    			});
+        }
+      }
   	});
   </script>
 </html>
