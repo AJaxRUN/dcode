@@ -1,0 +1,23 @@
+.box {
+	background: rgba(255,255,255, 0.45);
+	border-radius: 25px 60px;
+  	width: 25%;
+	padding: 40px 40px 20px 40px;
+	margin-left: 9px;
+	margin-top: 12px;
+}
+.data {
+	float: right;
+	background: rgba(255,255,255, 0.80);
+  	width: 35%;
+  	border-radius: 25px 60px;
+	margin-right: 9px;
+	padding: 40px 40px 20px 40px;
+	margin-top: -300px;
+}
+.status {
+	background-color: rgb(255, 245, 107);
+	border-radius: 25px 60px;
+	padding: 4px 4px 2px 4px;
+	display: inline-block;
+}

@@ -13,7 +13,7 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script>
   	$(document).ready(function(){
-      $("#flip").hover(function(){
+      $("#flip").click(function(){
           $("#panel").slideToggle("slow");
         });
     });
@@ -60,7 +60,7 @@
           </p>
           <p><input type="checkbox" name="dev" id="dev" class="form-check-input"> Developer</p>
           <div>
-            <p><button type="button" id="submit_btn" name="login" class="btn btn-success btn-lg">login</button></p>
+            <p><button type="button" id="submit_btn" name="login" class="btn btn-primary btn-lg">login</button></p>
             <p><button type="button" id="register_btn" name="register" class="btn btn-primary btn-lg">register</button></p>
           </div>
 				</div>

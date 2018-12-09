@@ -2,7 +2,7 @@
 session_start();
 if(!isset($_SESSION['login'])||($_SESSION['login']==false))
 {
-  header('Location:../../index.php');
+  header('Location:../logout/logout.php?login=failed');
 }
 require "../connection/connection.php" ;
 $conn = Connection();

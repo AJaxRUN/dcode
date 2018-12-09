@@ -16,13 +16,19 @@
 	//Redirect to login page
 	if(!$_SESSION['login'])
 	{
-		redirect_page("modules/login_module/login.php");
+		if(isset($query)&&!empty($query))
+			redirect_page("modules/login_module/login.php?"+$query);
+		else
+			redirect_page("modules/login_module/login.php");
 	}
 	
 	//Home page after login
 	else if($_SESSION['login'] == true)
 	{
-		redirect_page("modules/landing_module/request.php");
+		if($_SESSION["admin"]==true)
+			redirect_page("modules/landing_module/request.php");
+		else
+			redirect_page("modules/landing_module/userlogin.php");
 	}
 
 	//Function to load login page

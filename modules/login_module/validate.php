@@ -2,10 +2,15 @@
 	include "../connection/connection.php";
 	session_start();
 	$conn = Connection();
-	if(isset($_REQUEST["clgname"])&&!empty($_REQUEST["clgname"]))
+	if(isset($_REQUEST["clgname"])&&!empty($_REQUEST["clgname"])) {
 		$tablename = $_REQUEST["clgname"];
-	else
+		$_SESSION['admin'] = false;
+		$_SESSION['clgname'] = $_REQUEST["clgname"];
+	}
+	else {
 		$tablename = "developer";
+		$_SESSION['admin'] = true;
+	}
 	if(empty($_REQUEST)) {
 		echo "Error";
 		exit();
@@ -19,6 +24,10 @@
 			$data = json_decode($result->fetch_assoc()['data'], true);
 				if(isset($data[$username])&&strtolower($data[$username]['password'])==$password) {
 					$_SESSION['login'] = true;
+					$_SESSION['name'] = $data[$username]['name'];
+					$_SESSION['empcode'] =$username;
+					if(isset($_REQUEST["clgname"])&&!empty($_REQUEST["clgname"]))
+						$_SESSION['status'] = $data[$username]['status'];
 					echo "success";
 				}
 				else
