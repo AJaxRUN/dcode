@@ -24,7 +24,7 @@
 <body>
 	<div class="bg text-xs-center">
 	  <h1 class="display-3">Thank You!</h1>
-	  <p class="lead"><strong>We will send an email within 48hrs</strong> in the registered mail ID for further instructions on how to complete your account setup, after approving the request.</p>
+	  <p class="lead"><strong>We will send an confirmation email within 48hrs</strong> in the registered mail ID for further instructions on how to complete your account setup, after approving the request, only after which you will be able to login.</p>
 	  <hr>
 	  <p>
 	    Any queries? <p>Contact us:<p>dcodedevelopers@gmail.com</p></p>
