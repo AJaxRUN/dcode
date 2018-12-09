@@ -31,12 +31,17 @@ $conn = Connection();
             $data = json_decode($result->fetch_assoc()['data'], true);
             foreach($data as $key=>$value)
             {
+				$q = "SELECT 1 FROM ".$key." LIMIT 1";
+				$re = mysqli_query($conn,$q);
                 echo "<div class='card'>";
                 echo "<div class='container'>";
                 echo "<h4><b>".$key."</b></h4>";
-                echo "<p>".$data[$key]['username']."</p>";
-                echo "<button class='btn btn-sm btn-success' id=$key onclick='redirect(this.id)' type='button'>Accept</button>";
-                echo " </div>";
+				echo "<p>".$data[$key]['username']."</p>";
+				if($re){
+				echo "<button class='btn btn-sm btn-success disabled done' type='button'>Accepted</button>";}
+				else{
+				echo "<button class='btn btn-sm btn-success accept' id=$key onclick='redirect(this.id)' type='button'>Accept</button>";}
+				echo " </div>";
                 echo "</div>";
             }
         ?>
@@ -49,7 +54,8 @@ $conn = Connection();
   <script type="text/javascript">
   function redirect(id)
   {
-	  window.location.href="requestcreate.php?name="+id;
+	  window.location.href="requestcreate.php?name="+id; 
+	  alert("Table Created Successfully!");
   }
   	// function errordisplay(id, msg)
   	// {

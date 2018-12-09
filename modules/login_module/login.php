@@ -28,16 +28,24 @@
 	<div id="panel" hidden>
 		<div class="card">
 		<!-- <div class="container"> -->
-			<h4><b>Arjun C R</b></h4>
+		<img src="../../src/images/aj.jpg" style="float:left;width:100px;height:90px;margin-bottom:5px;">
+			<h4><b>C R Arjun</b></h4>
 			<h5>CSE-A</h5>
 			<h5>2016-20</h5>
 		<!-- </div> -->
 </div>
 		<div class="card">
 		<!-- <div class="container"> -->
+		<img src="../../src/images/aksh.jpg" style="float:left;width:100px;height:90px;margin-bottom:5px;">
 			<h4><b>R Akshaya</b></h4>
 			<h5>CSE-A</h5>
 			<h5>2016-20</h5>
+		<!-- </div> -->
+</div>
+<div class="card">
+		<!-- <div class="container"> -->
+			<h4><b>Mrs.M Indumathy</b></h4>
+			<h5>Staff Co-Ordinator</h5>
 		<!-- </div> -->
 </div>
 </div>
