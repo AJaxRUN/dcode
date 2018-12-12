@@ -20,6 +20,7 @@
 	</script>
 	<link rel="stylesheet" href="../../css/login.css">
 	<ul>
+    <li style="float:left;margin-left:20px;"><a id="dcode" class="active" style="text-decoration:none;" href="../info/info.php">D CODE</a></li>
   <li style="float:right;margin-right:10px" id="flip"><a class="active" style="text-decoration:none;">Developers</a></li>
 </ul>
 </head>
@@ -44,8 +45,10 @@
 </div>
 <div class="card">
 		<!-- <div class="container"> -->
+      <img src="../../src/images/maam.jpg" style="float:left;width:100px;height:90px;margin-bottom:5px;">
 			<h4><b>Mrs.M Indumathy</b></h4>
 			<h5>Staff Co-Ordinator</h5>
+      <h5><br></h5>
 		<!-- </div> -->
 </div>
 </div>
@@ -55,7 +58,7 @@
 					<h3>D Code</h3><hr>
           <div class="alert-danger" id="invalid"></div><br>
           <label for="username" style="float:left;margin-bottom:10px;">Username <span class="required-input">*</span> </label>
-					<input type="text" id="username" name="username" placeholder="Username" class="form-control">
+					<input type="text" id="username" name="username" placeholder="Employee Code" class="form-control">
 					<p id="empty_username" class="alert-danger" hidden></p><br>
           <label for="password" style="float:left;margin-bottom:10px;">Password <span class="required-input">*</span> </label>
 					<input type="password" id="password" name="password" placeholder="Password" class="form-control">
@@ -109,7 +112,7 @@
   	$("#submit_btn").click(function() {
   		if(!$("#username").val())
   		{
-  			errordisplay("empty_username","Enter your username");
+  			errordisplay("empty_username","Enter your Employee code");
   		}
   		else
   			$("#empty_username").hide();

@@ -25,7 +25,7 @@
                                             <input type="text" class="form-control"  name="name" placeholder="Administrator Name *" value="" />
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control"  name="username" placeholder="Administrator Username *" value="" />
+                                            <input type="text" class="form-control" id="username" name="username" placeholder="Administrator Employee Code *" value="" />
                                         </div>
                                     <div class="form-group">
                                         <input type="number" name="contactnumber" class="form-control" maxLength="12" oninput="javascript:if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" onkeydown="javascript: return event.keyCode == 69 ? false : true" placeholder="Contact Number *" value="" />
@@ -43,6 +43,8 @@
                                             <small id="emailHelp">Mail ID will be used only for updates and communication regarding queries!!</small>
                                             <div id="emailerror" class="alert-danger"></div><br>
                                         </div>
+                                        <p class="lead">
+                                        <a class="btn btn-primary btn-sm" href="../../index.php" role="button">Go to back login page.</a></p>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -66,6 +68,7 @@
                                         <div id="errormsg" class="alert-danger"></div><br>
                                         <input type="submit" id="register" class="btn btn-primary" value="Register"/>
                                     </div>
+                                        
                                 </div>
                     </div>
                 </div>
@@ -104,7 +107,7 @@
     $("#register").click(function(event) {
         event.preventDefault();
         var isValid=true;
-        if(($.trim($("#email").val()).length>0)&&!isValidEmailAddress($("#email").val()))
+        if(!($.trim($("#email").val()).length>0)&&!isValidEmailAddress($("#email").val()))
         {
             $("#emailerror").text(" Please enter a valid email ID").show();
             isValid=false;

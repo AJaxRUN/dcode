@@ -73,7 +73,6 @@
 			type:"GET",
 			url: "populateAjax.php",
 			success: function(data) {
-				console.log(data);
 				$("#status").append(data['status']);
 				$("#clgname").text(data['clgname']);
 				$("#empcode").append(data['empcode']);
