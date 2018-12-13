@@ -82,7 +82,8 @@ label{
   				  if(data==="failed")
   				  	errordisplay("empty_password","Invalid credentials");
   				  else if(data==="success") {
-  				  	window.location.href = "../../create_user.php";
+  				  	window.location.href = "create_user.php";
+						alert("done");
   				  }
   				  else if(data==="Error")
   				  	errordisplay("empty_password","Unknown Error");
