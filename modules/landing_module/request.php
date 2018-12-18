@@ -57,42 +57,5 @@ $conn = Connection();
 	  window.location.href="requestcreate.php?name="+id; 
 	  alert("Table Created Successfully!");
   }
-  	// function errordisplay(id, msg)
-  	// {
-  	// 	$("#"+id).html(msg).show();
-  	// }
-  	// $("#submit_btn").click(function() {
-  	// 	if(!$("#username").val())
-  	// 	{
-  	// 		errordisplay("empty_username","Enter your username");
-  	// 	}
-  	// 	else
-  	// 		$("#empty_username").hide();
-  	// 	if(!$("#password").val())
-  	// 	{
-  	// 		errordisplay("empty_password","Enter your password");
-  	// 	}
-  	// 	else
-  	// 		$("#empty_password").hide();
-  	// 	if(!$("#empty_password").is(":visible")&&!($("#empty_username").is(":visible")))
-  	// 	{
-  	// 		var uname = $("#username").val();
-  	// 		var pwd = $("#password").val();
-  	// 		$.ajax({
-  	// 			type:"POST",
-  	// 			url:"validate.php?username="+uname+"&password="+pwd,
-  	// 			success:function(data)
-  	// 			{
-  	// 			  if(data==="failed")
-  	// 			  	errordisplay("empty_password","Invalid credentials");
-  	// 			  else if(data==="success") {
-  	// 			  	window.location.href = "../../index.php";
-  	// 			  }
-  	// 			  else if(data==="Error")
-  	// 			  	errordisplay("empty_password","Unknown Error");
-  	// 			}
-  	// 		});
-  	// 	}
-  	// });
   </script>
 </html>

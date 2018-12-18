@@ -6,5 +6,5 @@
 	$empcode = $_SESSION['empcode'];
 	$result = $conn->query("SELECT data FROM ".$clgname." WHERE details='users'");
 	$r = json_decode($result->fetch_assoc()['data'],true); 
-	echo json_encode($r[$empcode]);
+	echo $r['empcode']."%%".$r['email']."%%".$r['contactnumber'];
 ?>

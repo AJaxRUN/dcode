@@ -11,13 +11,7 @@
 <head>
 	<title>D CODE</title>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script>
-  	$(document).ready(function(){
-      $("#flip").click(function(){
-          $("#panel").slideToggle("slow");
-        });
-    });
-	</script>
+	<script src= "../developer_module/developer.js"></script>
 	<link rel="stylesheet" href="../../css/login.css">
 	<ul>
     <li style="float:left;margin-left:20px;"><a id="dcode" class="active" style="text-decoration:none;" href="../info/info.php">D CODE</a></li>
@@ -25,33 +19,7 @@
 </ul>
 </head>
 <body>
-	<div class="container-fluid">
-	<div id="panel" hidden style="z-index:100;">
-		<div class="card">
-		<!-- <div class="container"> -->
-		<img src="../../src/images/aksh.jpg" style="float:left;width:100px;height:90px;margin-bottom:5px;">
-			<h4><b>R Akshaya</b></h4>
-			<h5>CSE-A</h5>
-			<h5>2016-20</h5>
-		<!-- </div> -->
-</div>
-<div class="card">
-    <!-- <div class="container"> -->
-    <img src="../../src/images/aj1.jpg" style="float:left;width:100px;height:90px;margin-bottom:5px;">
-      <h4><b>C R Arjun</b></h4>
-      <h5>CSE-A</h5>
-      <h5>2016-20</h5>
-    <!-- </div> -->
-</div>
-<div class="card">
-		<!-- <div class="container"> -->
-      <img src="../../src/images/maam.jpg" style="float:left;width:100px;height:90px;margin-bottom:5px;">
-			<h4><b>Mrs.M Indumathy</b></h4>
-			<h5>Staff Co-Ordinator</h5>
-      <h5><br></h5>
-		<!-- </div> -->
-</div>
-</div>
+	<div id="navbar" style="z-index:1000;position:relative;width:auto;height:auto;"></div>
 		<form type="post">
 			<div class="form-group col-lg-3 col-sm-offset-4" style="padding-top: 4%;text-align:center;">
 				<div class="inputBg">
@@ -78,9 +46,10 @@
 	</div>
 </body>
   <script type="text/javascript">
-
+  $("#navbar").load("../developer_module/developer.html");
     //To populate college names 
     $(document).ready(function () {
+
       $.ajax({
         type: 'GET',
         url: 'populate.php',

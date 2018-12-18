@@ -9,54 +9,24 @@
 <html>
 <head>
     <title>D Code</title>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script>
-    $(document).ready(function(){
-      $("#flip").click(function(){
-          $("#panel").slideToggle("slow");
-        });
-    });
-</script>
-    <!------ Include the above in your HEAD tag ---------->
-    <link rel="stylesheet" href="../../css/complaint.css">
-    <link rel="stylesheet" href="../../css/request.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src= "../developer_module/developer.js"></script></script>
+   <!-- <link rel="stylesheet" href="../../css/request.css"> -->
     <link rel="stylesheet" href="../../css/userlogin.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/complaint.css">
     <ul>
         <li style="float:right;margin-right:10px;"><a class="active" style="text-decoration:none;" href="../logout/logout.php">Logout</a></li>
         <li style="float:right;margin-right:10px;"><a class="active" style="text-decoration:none;" href="../complaint/complaint.php">Report Issue</a></li>
-        <li style="float:right;margin-right:10px;"><a class="active" style="text-decoration:none;" href="../upload/upload.php">Upload Data</a></li>
+        <li style="float:right;margin-right:10px;"><a class="active" style="text-decoration:none;" href="../upload_student_data/">Upload Data</a></li>
         <li style="float:left;margin-left:20px;"><a id="dcode" class="active" style="text-decoration:none;" href="../info/info.php">D CODE</a></li>
         <li style="float:right;margin-right:10px;"><a id="profile" class="active" style="text-decoration:none;" href="../profile/profile.php"></a></li>
         <li style="float:right;margin-right:10px" id="flip"><a class="active" style="text-decoration:none;">Developers</a></li>
+        <li style="float:right;margin-right:10px;"><a class="active" style="text-decoration:none;" href="../landing_module/userlogin.php">Home page</a></li>
     </ul>
 </head>
 <body>
-    <div id="panel" hidden style="position:relative;z-index: 9999;">
-                <div class="card">
-                <!-- <div class="container"> -->
-                <img src="../../src/images/aksh.jpg" style="float:left;width:100px;height:90px;margin-bottom:5px;">
-                    <h4><b>R Akshaya</b></h4>
-                    <h5>CSE-A</h5>
-                    <h5>2016-20</h5>
-                <!-- </div> -->
-        </div>
-        <div class="card">
-        <!-- <div class="container"> -->
-        <img src="../../src/images/aj1.jpg" style="float:left;width:100px;height:90px;margin-bottom:5px;">
-            <h4><b>C R Arjun</b></h4>
-            <h5>CSE-A</h5>
-            <h5>2016-20</h5>
-        <!-- </div> -->
-        </div>
-        <div class="card">
-                <!-- <div class="container"> -->
-                    <h4><b>Mrs.M Indumathy</b></h4>
-                    <h5>Staff Co-Ordinator</h5>
-                <!-- </div> -->
-        </div>
-    </div>
+    <div id="navbar" style="z-index:1000;position:relative;width:auto;height:auto;"></div>
     <div class="container contact-form">
             <div class="contact-image">
                   <img src="../../src/images/contract.png" style="width:100px;height:80px;" alt="complaint Form"/>
@@ -88,16 +58,17 @@
     </div>
 </body>
 <script type="text/javascript">
-
+    $("#navbar").load("../developer_module/developer.html");
     function isValidEmailAddress(emailAddress) {
     var pattern = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
     return pattern.test(emailAddress);
     }
 
     $(document).ready(function() {
+        //For getting session data
         $.ajax({
             type:"GET",
-            url: "../landing_module/populateAjax.php",
+            url: "../sessiondata/populateAjax.php",
             success: function(data) {
                 $("#status").append(data['status']);
                 $("#clgname").text(data['clgname']);
@@ -106,18 +77,18 @@
             },
             dataType:"json"
         });
-        $.ajax({
-            type:"GET",
-            url: "../get_user_data/populateAjax.php",
-            success: function(data) {
-                // $("#status").append(data['status']);
-                // $("#clgname").text(data['clgname']);
-                // $("#empcode").append(data['empcode']);
-                // $("#profile").text(data['name']);
-                console.log(data);
-            },
-            dataType:"json"
-        });
+        // For populating user data 
+        // $.ajax({
+        //     type:"GET",
+        //     url: "../get_user_data/populateAjax.php",
+        //     success: function(data) {
+        //         $("#clgname").text(data['clgname']);
+        //         $("#empcode").append(data['empcode']);
+        //         $("#profile").text(data['name']);
+        //         console.log(data);
+        //     },
+        //     dataType:"json"
+        // });
     });
     $("#submit").click(function(event) {
         event.preventDefault();

@@ -26,8 +26,8 @@
 					$_SESSION['login'] = true;
 					$_SESSION['name'] = $data[$username]['name'];
 					$_SESSION['empcode'] =$username;
-					if(isset($_REQUEST["clgname"])&&!empty($_REQUEST["clgname"]))
-						$_SESSION['status'] = $data[$username]['status'];
+					// if(isset($_REQUEST["clgname"])&&!empty($_REQUEST["clgname"])) {
+					// }
 					echo "success";
 				}
 				else
