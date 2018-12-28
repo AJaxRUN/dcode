@@ -4,21 +4,11 @@
     transition: 0.3s;
     border-radius: 5px;
     margin-bottom:5px;
-    background:white;
+    background:rgb(255, 255, 255);
+    color:black;
+    padding:5px;
+    text-align:center;
 }
-
-/* On mouse-over, add a deeper shadow */
-.card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
-
-
-.column {
-    float: left;
-    width: 50%;
-  }
-  
-  
   ul {
     list-style-type: none;
     margin: 0;
@@ -26,7 +16,9 @@
     overflow: hidden;
     background-color: rgba(255,255,255, 0.30);
   }
-  
+  hr{
+  border-color: #222223;
+}
   li {
     float: left;
   }
@@ -46,4 +38,20 @@
 
   body {
     background: url(../src/images/bg.jpg);
+}
+
+.status {
+  background-color: rgb(255, 245, 107);
+  border-radius: 25px 60px;
+  padding: 4px 4px 2px 4px;
+  display: inline-block;
+}
+
+#panel{
+  border: solid 1px #c3c3c3;
+  display: none;
+  background-color: rgba(255,255,255, 0.30);
+  width:400px;
+  margin-right: 130px;
+  float:right;
 }

@@ -9,8 +9,8 @@
 .data {
 	float: right;
 	background: rgba(255,255,255, 0.80);
-  	width: 35%;
-  	border-radius: 25px 60px;
+	width: 35%;
+	border-radius: 25px 60px;
 	margin-right: 9px;
 	padding: 40px 40px 20px 40px;
 	margin-top: -300px;
