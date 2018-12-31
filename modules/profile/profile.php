@@ -27,12 +27,43 @@
 <body>
     <div id="navbar" style="z-index:1000;position:relative;width:auto;height:auto;"></div> 
     <div class="data">
-        <h2 id="clg"></h2>
+        <h1 id="clg"></h1>
+        <h3 id="empcode"></h3>
         <hr>
-        <h4 id="name">Employee name:</h4>
+        <form method="post" id="profile_details" action="changeDetails.php">
+            <div class="form-group">
+                <small>Name:</small>
+                <input type="text" id="name" name="name" class="form-control" placeholder="Your Name" value="" />
+            </div>
+            <div class="form-group">
+                <small>Email:</small>
+                <input type="text" id="email" name="email" class="form-control" placeholder="Your Email"/>
+            </div>
+            <div class="form-group">
+                <small>Contact no:</small>
+                <input type="text" id="contact" name="contact" class="form-control" placeholder="Your Phone Number" value="" />
+            </div>
+            <div class="form-group">
+                <small>Password/New Password:</small>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Your new password" value="" />
+            </div>
+            <div class="form-group">
+                <small>Confirm your password:</small>
+                <input type="password" id="cnfpassword" class="form-control" placeholder="Confirm your new password" value="" />
+            </div>
+            <div id="error" class="alert-danger" style="display:inline-block;margin-left:17%;padding:1.02%;"></div><br>
+            <br>
+            <div class="form-group">
+                <input style="margin-left:35%;" type="submit" name="btnSubmit" id="submit" class="btn btn-primary" value="Update" />
+            </div>
+        </form>
     </div>
 </body>
 <script type="text/javascript">
+    //Setup
+    $("#error").hide();
+    var errormsg="";
+
     //For loading navbar    
     $("#navbar").load("../developer_module/developer.html");
       $(document).ready(function() {
@@ -40,13 +71,75 @@
             type:"GET",
             url: "../sessiondata/populateAjax.php",
             success: function(data) {
-                $("#name").append(" "+data['name']);
+                $("#name").val(data['name']);
                 $("#clg").text(data['clgname']);
-                // $("#empcode").text(data['empcode']);
+                $("#empcode").text(data['alldata']['username']);
+                $("#email").val(data['alldata']['email']);
+                $("#contact").val(data['alldata']['contactnumber']);
                 $("#profile").text(data['name']);
             },
             dataType:"json"
         });
+    });
+
+    //Email validation function for regex 
+    function isValidEmailAddress(emailAddress) {
+    var pattern = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+    return pattern.test(emailAddress);
+    }
+
+    //To do validation
+    $("#submit").click(function(event) {
+        event.preventDefault();
+        var isValid=true;
+        if(!($.trim($("#email").val()).length>0)&&!isValidEmailAddress($("#email").val()))
+        {
+            $("#error").text(" Please enter a valid email ID").show();
+            isValid=false;
+        }
+        else {
+            $("#error").hide();
+            isValid=true;
+        }
+        $("#error").text("").hide();
+        if(!($("#password").val()==$("#cnfpassword").val())) {
+            isValid=false;
+            errormsg=" Passwords don't match!";
+            $("#error").text(errormsg).show();
+        }
+        else {
+            $("form input").each(function() {
+                var element = $(this);
+                if (element.val() == "") {
+                   isValid=false;
+                   element.addClass("is-invalid");
+                    $("#error").text("Please fill all the input fields(valid inputs)!!").show();
+                }
+                else
+                    element.removeClass("is-invalid");
+            });
+        }
+        if(isValid)
+            $("#error").text("").hide();
+        if(isValid) {
+            data=$("form").serialize();
+            $.ajax({
+                type:"POST",   
+                async: false,
+                cache: false,
+                url:"profileUpdateAjax.php?"+data,
+                success:function(res)
+                { 
+                    if(res.trim()=="success"){
+                        alert("Updated Succesfully!!");
+                        window.location.href="../../";
+                    }
+                    else
+                        alert("Some error occured");
+                }
+
+            });
+        }
     });
 </script>
 </html>
