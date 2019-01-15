@@ -1,10 +1,17 @@
 .data {
-	margin-top: 6.5%;
+	margin-top: 5.3%;
 	margin-left: 28%;
-	background: rgba(255,255,255, 0.80);
+	background: rgba(255,255,255, 0.60);
 	width: 40%;
 	border-radius: 25px 60px;
 	margin-right: 9px;
 	padding: 40px 40px 20px 40px;
 
+}
+
+hr {
+	margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #eee;
 }

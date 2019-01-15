@@ -9,21 +9,21 @@
     padding:5px;
     text-align:center;
 }
-  ul {
+ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: rgba(255,255,255, 0.30);
   }
-  hr{
+hr{
   border-color: #222223;
 }
-  li {
+li {
     float: left;
   }
   
-  li a {
+li a {
     display: block;
     color: white;
     text-align: center;
@@ -31,12 +31,12 @@
     text-decoration: none;
   }
   
-  li a:hover {
+li a:hover {
     background-color: white;
     color:black;
   }
 
-  body {
+body {
     background: url(../src/images/bg.jpg);
 }
 
